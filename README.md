@@ -395,3 +395,8 @@ AIが実在しない芸人を推薦したり、ユーザーの条件と合わな
 対策：Issueを小さな作業単位に分割し、調査・実装・テストを含めて見積もります。
 
 また、Open AI APIとYouTube Data APIについては開発初期に技術検証を行い、実現方法や課題を把握した上で本実装に進みます。週単位で進捗を確認し、必要に応じて実装順序や機能の優先順位を見直します。
+
+## 画面遷移図
+
+[お笑い相談所\_画面遷移図 (Figma) ](https://www.figma.com/design/eO6fdcRYUl2jbdxjA1OTAW/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=Fbr9J6If4JoIXG3P-1)
+
