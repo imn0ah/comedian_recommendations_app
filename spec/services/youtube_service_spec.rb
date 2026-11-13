@@ -18,7 +18,6 @@ RSpec.describe YoutubeService do
         it "YouTube APIからエラーが返された場合はnilを返すこと" do
            error_response = Net::HTTPForbidden.new("1.1", "403", "Forbidden")
            allow(Net::HTTP).to receive(:get_response).and_return(error_response)
-           
            expect(service.search).to be_nil
         end
     end
