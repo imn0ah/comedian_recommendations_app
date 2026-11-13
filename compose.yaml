@@ -12,6 +12,7 @@ services:
       DB_USERNAME: postgres
       DB_PASSWORD: password
       OPENAI_API_KEY: ${OPENAI_API_KEY}
+      YOUTUBE_API_KEY: ${YOUTUBE_API_KEY}
     depends_on:
       - db
 
