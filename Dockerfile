@@ -15,4 +15,4 @@ COPY . .
 
 RUN SECRET_KEY_BASE_DUMMY=1 bin/rails assets:precompile
 
-CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+CMD ["sh", "-c", "bin/rails db:prepare && exec bin/rails server -b 0.0.0.0"]
