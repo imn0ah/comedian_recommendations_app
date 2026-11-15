@@ -1,0 +1,23 @@
+# Git関連
+.git
+
+# 環境変数・秘密情報
+.env
+.env.*
+!.env.example
+config/master.key
+config/credentials/*.key
+
+# ローカル開発用ファイル
+log/
+tmp/
+coverage/
+node_modules/
+
+# インストール済みのGem
+vendor/bundle/
+
+# エディタ・OS関連
+.DS_Store
+.vscode/
+.idea/
