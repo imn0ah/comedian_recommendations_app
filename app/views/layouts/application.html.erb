@@ -19,21 +19,25 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "bootstrap.min", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
   </head>
 
-  <body>
-     <%= render "shared/header" %>
+  <body class="d-flex flex-column min-vh-100">
+    <%= render "shared/header" %>
 
-    <% if notice.present? %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
+    <main class="flex-grow-1">
+      <div class="container mt-3">
+        <% if notice.present? %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
 
-    <% if alert.present? %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
-
-    <%= yield %>
-
+        <% if alert.present? %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      <div>
+      <%= yield %>
+    </main>
+    <%= render "shared/footer" %>
   </body>
 </html>
