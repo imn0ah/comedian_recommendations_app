@@ -85,7 +85,7 @@ RSpec.describe "Authentication", type: :request do
 
       get root_path
       expect(response.body).to include("ログイン")
-      expect(response.body).not_to include("ログアウト")
+      expect(response.parsed_body.at_css("form[action='/users/sign_out']")).to be_nil
     end
   end
 end
