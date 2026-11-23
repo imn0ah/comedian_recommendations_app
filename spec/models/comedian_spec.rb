@@ -17,4 +17,13 @@ RSpec.describe Comedian, type: :model do
     comedian = Comedian.new(name: "サンドウィッチマン")
     expect(comedian).to be_valid
   end
+
+  it "芸人が複数の投稿を持てる" do
+    comedian = FactoryBot.create(:comedian)
+
+    FactoryBot.create(:post, comedian: comedian)
+    FactoryBot.create(:post, comedian: comedian)
+
+    expect(comedian.posts.count).to eq(2)
+  end
 end
