@@ -14,4 +14,23 @@ RSpec.describe Post, type: :model do
     post = FactoryBot.build(:post, content: "")
     expect(post).to be_invalid
   end
+
+  it "同じユーザーが同じ芸人の投稿を重複して投稿できない" do
+    first_post = FactoryBot.create(:post)
+    second_post = FactoryBot.build(
+      :post,
+      user: first_post.user,
+      comedian: first_post.comedian
+    )
+    expect(second_post).to be_invalid
+  end
+
+  it "別ユーザーが同じ芸人に投稿ができる" do
+    first_post = FactoryBot.create(:post)
+    second_post = FactoryBot.build(
+      :post,
+      comedian: first_post.comedian
+    )
+    expect(second_post).to be_valid
+  end
 end
