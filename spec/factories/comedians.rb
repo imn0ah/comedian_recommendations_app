@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :comedian do
-    name { "MyString" }
+    sequence(:name) { |n| "芸人#{n}" }
   end
 end

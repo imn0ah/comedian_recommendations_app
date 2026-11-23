@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
-    comedian { nil }
-    user { nil }
-    content { "MyText" }
+    association :comedian
+    association :user
+    content { "この芸人の漫才面白かった" }
   end
 end
