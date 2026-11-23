@@ -1,0 +1,16 @@
+<h1>おすすめを投稿する</h1>
+<p>あなたのおすすめ芸人と、その魅力を教えてください</p>
+
+<%= form_with model: @post do |f| %>
+  <div>
+    <%= label_tag :comedian_name, "芸人名orコンビ名" %>
+    <%= text_field_tag :comedian_name, params[:comedian_name] %>
+  </div>
+
+  <div>
+    <%= f.label :content, "おすすめ理由"%>
+    <%= f.text_area :content %>
+  </div>
+  
+  <%= f.submit "投稿する" %>
+<% end %>
