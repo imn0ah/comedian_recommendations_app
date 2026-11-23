@@ -41,4 +41,12 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:password_confirmation]).to be_present
   end
+
+  it "ユーザーが複数の投稿を持てる" do
+    user = FactoryBot.create(:user)
+    FactoryBot.create(:post, user: user)
+    FactoryBot.create(:post, user: user)
+
+    expect(user.posts.count).to eq(2)
+  end
 end
