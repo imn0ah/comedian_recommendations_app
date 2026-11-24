@@ -2,6 +2,9 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [ :new, :create ]
 
   def index
+    @comedians = Comedian.joins(:posts)
+                         .group("comedians.id")
+                         .order(Arel.sql("MAX(posts.created_at) DESC"))
   end
 
   def new
