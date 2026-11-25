@@ -1,0 +1,18 @@
+<h1>おすすめ投稿編集</h1>
+<p>投稿したおすすめ理由を編集できます。</p>
+
+<%= form_with model: @post do |f| %>
+  <div>
+    <p>芸人名orコンビ名</p>
+    <%= @post.comedian.name %>
+  </div>
+
+  <div>
+    <%= f.label :content, "おすすめ理由"%>
+    <%= f.text_area :content %>
+  </div>
+  
+  <%= f.submit "変更を保存する" %>
+<% end %>
+
+<%= link_to "キャンセル", comedian_path(@post.comedian_id)%>
