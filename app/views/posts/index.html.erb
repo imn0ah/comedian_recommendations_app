@@ -2,7 +2,7 @@
 <p>みんながおすすめした芸人をチェックしよう！</p>
 
 <% @comedians.each do |comedian| %>
-  <p><%= comedian.name %></p>
+  <p><%= link_to comedian.name, comedian_path(comedian.id) %></p>
   <p><%= comedian.posts.order(created_at: :desc).first.content %></p>
 <% end %>
 
