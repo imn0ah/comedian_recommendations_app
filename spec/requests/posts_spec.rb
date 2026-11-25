@@ -134,6 +134,45 @@ RSpec.describe "Posts", type: :request do
         get posts_path
         expect(response).to have_http_status(200)
       end
+
+      it "投稿が存在する芸人が一覧に表示される" do
+        post = FactoryBot.create(:post)
+        get posts_path
+        expect(response.body).to include(post.comedian.name)
+      end
+
+      it "投稿が存在しない芸人は表示されない" do
+        comedian = FactoryBot.create(:comedian)
+        get posts_path
+        expect(response.body).not_to include(comedian.name)
+      end
+
+      it "同じ芸人が重複して表示されない" do
+        first_post = FactoryBot.create(:post)
+        FactoryBot.create(:post, comedian: first_post.comedian)
+        get posts_path
+        expect(response.body.scan(first_post.comedian.name).count).to eq(1)
+      end
+
+      it "各芸人の最新投稿日時が新しい順に表示される" do
+        first_post = FactoryBot.create(:post, created_at: 3.days.ago)
+        second_post = FactoryBot.create(:post, created_at: 2.days.ago)
+        FactoryBot.create(:post, comedian: first_post.comedian, created_at: 1.day.ago)
+
+        get posts_path
+        first_position = response.body.index(first_post.comedian.name)
+        second_position = response.body.index(second_post.comedian.name)
+        expect(first_position).to be < second_position
+      end
+
+      it "各芸人の最新のおすすめ理由が表示される" do
+        first_post = FactoryBot.create(:post, content: "漫才が面白い", created_at: 2.days.ago)
+        FactoryBot.create(:post, comedian: first_post.comedian, content: "トークが面白い", created_at: 1.day.ago)
+
+        get posts_path
+        expect(response.body).to include("トークが面白い")
+        expect(response.body).not_to include("漫才が面白い")
+      end
     end
   end
 end
