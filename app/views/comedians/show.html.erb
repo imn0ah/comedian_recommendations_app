@@ -1,0 +1,7 @@
+<h1><%= @comedian.name %></h1>
+
+<% @posts.each do |post| %>
+  <p><%= post.content %></p>
+<% end %>
+
+<%= link_to "おすすめ一覧に戻る", posts_path %>
