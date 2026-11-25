@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "home#index"
   devise_for :users
   resources :recommendations, only: [ :index ]
-  resources :posts, only: [ :index, :new, :create, :show ]
+  resources :posts, only: [ :index, :new, :create, :edit, :update ]
   resources :comedians, only: [ :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
