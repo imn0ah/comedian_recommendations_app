@@ -3,6 +3,7 @@
 
   <nav class="d-flex align-items-center gap-3">
     <% if user_signed_in? %>
+      <%= link_to "マイページ", user_path %>
       <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "ログイン", new_user_session_path %>
