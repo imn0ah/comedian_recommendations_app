@@ -1,0 +1,7 @@
+<h1>マイページ</h1>
+
+<% @posts.each do |post| %>
+  <p><%= post.comedian.name %></p>
+  <p><%= post.content %></p>
+  <%= link_to "編集する", edit_post_path(post.id) %>
+<% end %>
