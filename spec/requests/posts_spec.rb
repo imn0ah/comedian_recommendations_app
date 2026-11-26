@@ -106,6 +106,43 @@ RSpec.describe "Posts", type: :request do
         expect(response).to have_http_status(422)
         expect(response.body).to include("既にこの芸人の投稿はされています")
       end
+
+      it "自身の投稿内容を編集できること" do
+        first_post = FactoryBot.create(:post, content: "モノマネ上手")
+        sign_in(first_post.user)
+
+        post_params = { content: "意外と大喜利強い" }
+
+        patch post_path(first_post.id), params: { post: post_params }
+        expect(first_post.reload.content).to eq("意外と大喜利強い")
+        expect(response).to redirect_to(comedian_path(first_post.comedian.id))
+        expect(flash[:notice]).to eq("編集しました")
+      end
+
+      it "他人の投稿内容を編集できない" do
+        first_post = FactoryBot.create(:post, content: "モノマネ上手")
+        other_user = FactoryBot.create(:user)
+        sign_in(other_user)
+
+        post_params = { content: "投稿内容が変更できない" }
+
+        patch post_path(first_post.id), params: { post: post_params }
+        expect(first_post.reload.content).to eq("モノマネ上手")
+        expect(response).to redirect_to(posts_path)
+        expect(flash[:alert]).to eq("指定された投稿は編集できません")
+      end
+
+      it "無効な編集内容を保存できない" do
+        first_post = FactoryBot.create(:post, content: "お腹千切れるくらい面白い")
+        sign_in(first_post.user)
+
+        post_params = { content: "" }
+
+        patch post_path(first_post.id), params: { post: post_params }
+        expect(first_post.reload.content).to eq("お腹千切れるくらい面白い")
+        expect(response).to have_http_status(422)
+        expect(response.body).to include("おすすめ理由を入力してください")
+      end
     end
   end
 
