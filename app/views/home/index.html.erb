@@ -1,30 +1,48 @@
-<h1 class="text-center">お笑い相談所</h1>
+<section class="home-hero text-center py-5">
+  <div class="container">
+      <h1 class="display-4 fw-bold">お笑い相談所</h1>
 
-<p class="lead text-center">
- 新しい「面白い」に出会おう！！
-</p>
+      <p class="lead">
+        新しい「面白い」がきっと見つかる
+      </p>
 
-<p class="text-center text-muted">
- 好きなお笑いのジャンルや好みをもとに、
- AIがおすすめの芸人を紹介します。
- みんなのおすすめから、新しい芸人との出会いも楽しめます。
-</p>
+      <p class="mb-4 text-muted w-50 mx-auto">
+        好きなお笑いのジャンルや好みをもとに、
+        AIがおすすめの芸人を紹介します。<br>
+        みんなのおすすめから、新しい芸人との出会いも楽しめます。
+      </p>
+      <%= link_to "AI推薦機能", recommendations_path, class: "btn btn-lg btn-primary-custom" %>
+      <%= link_to "みんなのおすすめ", posts_path, class: "btn btn-lg btn-secondary-custom" %>
+    </div>
+</section>
 
-<h2>主要機能</h2>
-
-<h3>AIによる推薦機能！！</h3>
-<p>
- どんな芸人見たいか・ネタの種類・今の気分を選択すると
- AIがあなたにぴったりな芸人をおすすめします！
- またおすすめされた芸人のネタも動画でチェックできます！
- 今まで知らなかった新しい「面白い」に出会おう！！
-</p>
-<%= link_to "AI推薦機能", recommendations_path %>
-
-<h3>みんなのおすすめで一押し芸人を共有！！</h3>
-<p>
- みんなのおすすめで他の人のおすすめ芸人を見つけれます！
- みんながおすすめしている芸人を知ることで新しい「面白い」に出会おう！！
- あなたのおすすめ芸人も投稿機能を使ってみんなにシェアして、あなたの「面白い」を伝えよう！！
-</p>
-<%= link_to "みんなのおすすめ", posts_path %>
+<section class="container text-center py-5">
+    <h2 class="mb-4">主要機能</h2>
+        <div class="row">
+            <div class="col">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h3 class="fs-4 fw-bold mb-3">AIによる推薦機能</h3>
+                        <p>
+                          あなたの好みや今の気分に合わせて、AIがぴったりな芸人をおすすめします。<br>
+                          おすすめされた芸人の動画も視聴できます。<br>
+                          新しい「面白い」との出会いをお楽しみ下さい。
+                        </p>
+                        <%= link_to "AI推薦機能", recommendations_path, class: "btn btn-lg btn-primary-custom" %>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h3 class="fs-4 fw-bold mb-3">みんなのおすすめ</h3>
+                           <p>
+                              みんなのおすすめから、新しい芸人を発見。<br>
+                              あなたの一押し芸人も投稿して、あなたの「面白い」を共有しましょう。
+                            </p>
+                            <%= link_to "みんなのおすすめ", posts_path, class: "btn btn-lg btn-secondary-custom" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
