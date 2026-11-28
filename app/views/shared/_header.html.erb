@@ -1,15 +1,18 @@
 <header class="d-flex justify-content-between align-items-center gap-3 p-3">
-  <%= link_to "お笑い相談所", root_path %>
+    <%= link_to root_path, class: "d-flex align-items-center gap-2 fs-3 fw-bold text-dark text-decoration-none" do %>
+      <i class="header-logo bi bi-emoji-smile" aria-hidden="true"></i>
+      <span>お笑い相談所</span>
+    <% end %>
 
   <nav class="d-flex align-items-center gap-3">
+    <%= link_to "AIおすすめ", recommendations_path, class: "text-dark text-decoration-none fw-medium" %>
+    <%= link_to "みんなのおすすめ", posts_path, class: "text-dark text-decoration-none fw-medium" %>
     <% if user_signed_in? %>
-      <%= link_to "マイページ", user_path %>
-      <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <%= link_to "マイページ", user_path, class: "text-dark text-decoration-none fw-medium" %>
+      <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary-custom fw-medium" %>
     <% else %>
-      <%= link_to "ログイン", new_user_session_path %>
-      <%= link_to "新規登録", new_user_registration_path %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary-custom fw-medium" %>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary-custom fw-medium" %>
     <% end %>
-    <%= link_to "AI推薦機能", recommendations_path %>
-    <%= link_to "みんなのおすすめ", posts_path %>
   </nav>
 </header>

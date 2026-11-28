@@ -1,23 +1,43 @@
 .home-hero {
-    background-color: #FFE3A3;
+    background-color: #FAF1E3;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-highlight {
+    color: #F28C28;
 }
 
 .btn-primary-custom {
-    background-color: #E9A323;
+    background-color: #F28C28;
     color: #292524;
-    border-color: #E9A323;
+    border-color: #F28C28;
 
-    --bs-btn-hover-bg: #D18D16;
+    --bs-btn-hover-bg: #E17A18;
     --bs-btn-hover-color: #292524;
-    --bs-btn-hover-border-color: #D18D16;
+    --bs-btn-hover-border-color: #E17A18;
 }
 
 .btn-secondary-custom {
     background-color: #FFFFFF;
-    color: #292524;
-    border-color: #E9A323;
+    color: #F28C28;
+    border-color: #F28C28;
+
 
     --bs-btn-hover-bg: #FFF3D6;
-    --bs-btn-hover-color: #292524;
-    --bs-btn-hover-border-color: #E9A323;
+    --bs-btn-hover-color: #E17A18;
+    --bs-btn-hover-border-color: #F28C28;
+}
+
+.header-logo {
+    background-color: #F28C28;
+    color: #FFFFFF;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
